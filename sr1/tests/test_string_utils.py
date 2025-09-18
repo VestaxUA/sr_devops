@@ -1,6 +1,5 @@
 from sr1.string_utils import print_string, analyze_string, uppercase_list
 
-
 def test_print_string_output(capsys):
     print_string("Привіт")
     captured = capsys.readouterr()
