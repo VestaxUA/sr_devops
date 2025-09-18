@@ -1,4 +1,4 @@
-from string_utils import print_string, analyze_string, uppercase_list
+from sr1.string_utils import print_string, analyze_string, uppercase_list
 from generator import even_odd_generator
 
 
