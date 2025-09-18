@@ -22,3 +22,13 @@ def uppercase_list(word: str) -> list[str]:
         print("Помилка: аргумент має бути рядком!")
         return []
     return [ch.upper() for ch in word]
+
+
+def even_odd_generator():
+    toggle = True
+    while True:
+        if toggle:
+            yield "Парне"
+        else:
+            yield "Непарне"
+        toggle = not toggle
