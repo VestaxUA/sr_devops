@@ -15,3 +15,10 @@ def analyze_string(s: str) -> None:
         print("Усі літери у нижньому регістрі.")
     else:
         print("Рядок містить як великі, так і малі літери.")
+
+
+def uppercase_list(word: str) -> list[str]:
+    if not isinstance(word, str):
+        print("Помилка: аргумент має бути рядком!")
+        return []
+    return [ch.upper() for ch in word]
