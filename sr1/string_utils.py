@@ -1,9 +1,9 @@
+
 def print_string(s: str) -> None:
     if not isinstance(s, str):
         print("Помилка: аргумент має бути рядком!")
         return
     print(s)
-
 
 def analyze_string(s: str) -> None:
     if not isinstance(s, str):
@@ -16,19 +16,8 @@ def analyze_string(s: str) -> None:
     else:
         print("Рядок містить як великі, так і малі літери.")
 
-
 def uppercase_list(word: str) -> list[str]:
     if not isinstance(word, str):
         print("Помилка: аргумент має бути рядком!")
         return []
     return [ch.upper() for ch in word]
-
-
-def even_odd_generator():
-    toggle = True
-    while True:
-        if toggle:
-            yield "Парне"
-        else:
-            yield "Непарне"
-        toggle = not toggle
