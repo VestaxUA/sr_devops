@@ -7,3 +7,6 @@ name = "sr4"
 version = "0.1.0"
 description = "A simple test Python package"
 authors = [{ name = "Valentyn Tkachyshchen" }]
+
+[tool.setuptools]
+packages = ["sr4"]
