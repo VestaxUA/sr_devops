@@ -1,0 +1,12 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sr4"
+version = "0.1.0"
+description = "A simple test Python package"
+authors = [{ name = "Valentyn Tkachyshchen" }]
+
+[tool.setuptools.packages.find]
+include = ["sr4"]
