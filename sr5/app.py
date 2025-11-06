@@ -1,5 +1,6 @@
 from flask import Flask, jsonify
 import logging
+import socket
 import time
 
 app = Flask(__name__)
@@ -13,6 +14,14 @@ logging.basicConfig(
 start_time = time.time()
 request_count = 0
 
+STATSD_HOST = "127.0.0.1"
+STATSD_PORT = 9999
+
+def send_to_statsd(message):
+    sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    sock.sendto(message.encode(), (STATSD_HOST, STATSD_PORT))
+    sock.close()
+
 @app.before_request
 def before_request():
     global request_count
@@ -25,9 +34,14 @@ def home():
 
 @app.route('/error')
 def error():
-    logging.warning("Виклик ендпоїнту /error — буде помилка")
-    x = 1 / 0
-    return str(x)
+    try:
+        logging.warning("Виклик ендпоїнту /error — буде помилка")
+        x = 1 / 0
+        return str(x)
+    except Exception as e:
+        logging.exception("Сталася помилка у /error")
+        send_to_statsd(f"Помилка: {type(e).__name__} - {e}")
+        return "Виникла помилка. Деталі записані у лог.", 500
 
 @app.route('/status')
 def status():
