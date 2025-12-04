@@ -1,5 +1,5 @@
 import pytest
-from app import add, is_even
+from sr6.app import add, is_even
 
 
 def test_add_simple():
